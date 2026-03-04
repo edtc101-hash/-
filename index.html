@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="인테리어패밀리 인스타그램 콘텐츠 생성기 - 카드뉴스 대본 및 릴스 영상 스크립트를 자동으로 생성합니다.">
+  <meta property="og:title" content="인테리어 콘텐츠 생성기">
+  <meta property="og:description" content="인테리어 업계 맞춤 인스타그램 콘텐츠를 자동으로 생성하세요.">
+  <title>인테리어 콘텐츠 생성기 | 인테리어패밀리</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">🏠</div>
+        <div class="logo-text">인테리어<span>패밀리</span></div>
+      </div>
+      <div class="header-badge">콘텐츠 생성기 v1.0</div>
+    </div>
+  </header>
+
+  <!-- Progress Stepper -->
+  <nav class="stepper" aria-label="진행 단계">
+    <div class="stepper-track">
+      <div class="stepper-progress"></div>
+      <div class="step-item active">
+        <div class="step-circle">1</div>
+        <div class="step-label">제품 정보</div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">2</div>
+        <div class="step-label">유형 선택</div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-label">결과 확인</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- ===== STEP 1: Product Info ===== -->
+    <section class="step-panel active" id="step-1">
+      <div class="section-title">
+        <h2>제품 정보 입력 ✏️</h2>
+        <p>홍보하실 제품의 정보를 입력해 주세요. 이 정보를 바탕으로 콘텐츠가 생성됩니다.</p>
+      </div>
+
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="product-name">
+              제품명 <span class="required">*</span>
+            </label>
+            <input type="text" class="form-input" id="product-name" placeholder="예: 카빙스톤 프로">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="brand-name">
+              브랜드명
+            </label>
+            <input type="text" class="form-input" id="brand-name" placeholder="기본값: 인테리어패밀리">
+            <div class="form-hint">비워두시면 '인테리어패밀리'로 생성됩니다.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="feature-1">
+            주요 특징 1 <span class="required">*</span>
+          </label>
+          <input type="text" class="form-input" id="feature-1" placeholder="예: 천연 대리석의 질감과 내구성을 모두 갖춘 신소재">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="feature-2">
+            주요 특징 2
+          </label>
+          <input type="text" class="form-input" id="feature-2" placeholder="예: 내오염성이 강해 주방 상판 및 벽체에 최적화">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="feature-3">
+            주요 특징 3
+          </label>
+          <input type="text" class="form-input" id="feature-3" placeholder="예: 5가지 독점 디자인 패턴 보유">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="target-customer">
+            타겟 고객 <span class="required">*</span>
+          </label>
+          <input type="text" class="form-input" id="target-customer" placeholder="예: 30-40대, 고급 주거 공간 리모델링 수요자">
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="nextStep()">
+          다음 단계 →
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 2: Content Type Selection ===== -->
+    <section class="step-panel" id="step-2">
+      <div class="section-title">
+        <h2>콘텐츠 유형 선택 🎯</h2>
+        <p>생성할 콘텐츠 유형을 선택해 주세요. 각 유형마다 카드뉴스 대본과 릴스 스크립트가 생성됩니다.</p>
+      </div>
+
+      <div class="select-all-bar">
+        <button class="select-all-btn" id="select-all-btn" onclick="selectAllTypes()">전체 선택</button>
+        <span class="select-count" id="select-count">0개 선택됨</span>
+      </div>
+
+      <div class="type-grid" id="type-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="prevStep()">← 이전</button>
+        <button class="btn btn-primary" onclick="nextStep()">콘텐츠 생성하기 🚀</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 3: Results ===== -->
+    <section class="step-panel" id="step-3">
+      <div class="section-title">
+        <h2>생성된 콘텐츠 📄</h2>
+        <p>각 콘텐츠를 펼쳐서 확인하고, 복사 버튼으로 클립보드에 복사하세요.</p>
+      </div>
+
+      <div class="results-container" id="results-container">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="prevStep()">← 유형 다시 선택</button>
+        <button class="btn btn-ghost" onclick="resetAll()">🔄 처음부터 다시</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 인테리어패밀리 콘텐츠 생성기 · Interior Content Generator</p>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
