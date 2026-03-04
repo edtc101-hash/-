@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <title>인테리어 콘텐츠 생성기 | 인테리어패밀리</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <!-- Header -->
@@ -18,7 +20,7 @@
         <div class="logo-icon">🏠</div>
         <div class="logo-text">인테리어<span>패밀리</span></div>
       </div>
-      <div class="header-badge">콘텐츠 생성기 v1.0</div>
+      <div class="header-badge">콘텐츠 생성기 v2.0</div>
     </div>
   </header>
 
@@ -49,6 +51,20 @@
       <div class="section-title">
         <h2>제품 정보 입력 ✏️</h2>
         <p>홍보하실 제품의 정보를 입력해 주세요. 이 정보를 바탕으로 콘텐츠가 생성됩니다.</p>
+      </div>
+
+      <!-- Photo Upload Section -->
+      <div class="upload-section">
+        <div class="section-subtitle">📷 고객 사진 업로드</div>
+        <div class="section-hint">카드뉴스에 사용할 사진을 순서대로 업로드해 주세요. 각 슬라이드의 배경으로 사용됩니다.</div>
+        <div class="photo-dropzone" id="photo-dropzone">
+          <div class="dropzone-icon">📁</div>
+          <div class="dropzone-text">여기로 사진을 끌어오거나 클릭하여 선택하세요</div>
+          <div class="dropzone-hint">JPG, PNG, WEBP 지원 · 여러 장 동시 업로드 가능</div>
+        </div>
+        <input type="file" id="photo-input" accept="image/*" multiple hidden>
+        <div class="photo-thumbnails" id="photo-thumbnails"></div>
+        <div class="photo-count" id="photo-count"></div>
       </div>
 
       <div class="form-card">
@@ -145,6 +161,73 @@
 
   </main>
 
+  <!-- Editor Modal -->
+  <div class="editor-modal" id="editor-modal">
+    <div class="editor-container">
+      <div class="editor-header">
+        <div class="editor-title">🎨 카드뉴스 에디터</div>
+        <div class="slide-nav">
+          <button class="slide-nav-btn" id="slide-prev" onclick="prevSlide()">◀</button>
+          <span class="slide-nav-text" id="slide-nav-text">1 / 5</span>
+          <button class="slide-nav-btn" id="slide-next" onclick="nextSlide()">▶</button>
+        </div>
+        <button class="editor-close-btn" onclick="closeEditor()">✕</button>
+      </div>
+      <div class="editor-body">
+        <div class="editor-toolbar">
+          <div class="tool-section">
+            <div class="tool-section-label">레이아웃</div>
+            <div class="template-btns">
+              <button class="template-btn" data-template="top" onclick="setTemplate('top', this)">⬆ 상단 텍스트</button>
+              <button class="template-btn active" data-template="bottom" onclick="setTemplate('bottom', this)">⬇ 하단
+                텍스트</button>
+              <button class="template-btn" data-template="center" onclick="setTemplate('center', this)">⬛ 중앙
+                텍스트</button>
+            </div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-section-label">텍스트 스타일</div>
+            <div class="tool-row">
+              <label>크기</label>
+              <input type="range" min="16" max="72" value="36" onchange="setFontSize(this.value)">
+            </div>
+            <div class="tool-row">
+              <label>색상</label>
+              <input type="color" value="#FFFFFF" onchange="setTextColor(this.value)">
+            </div>
+            <div class="tool-row">
+              <label>정렬</label>
+              <div class="align-btns">
+                <button class="align-btn" onclick="setTextAlign('left')">◀</button>
+                <button class="align-btn active" onclick="setTextAlign('center')">≡</button>
+                <button class="align-btn" onclick="setTextAlign('right')">▶</button>
+              </div>
+            </div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-section-label">배경 투명도</div>
+            <div class="tool-row">
+              <label>어둡기</label>
+              <input type="range" min="0" max="0.8" step="0.05" value="0.55" onchange="setBgOpacity(this.value)">
+            </div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-section-label">내보내기</div>
+            <div class="tool-actions">
+              <button class="tool-btn tool-btn-primary" onclick="downloadCurrentSlide()">📥 현재 슬라이드 저장</button>
+              <button class="tool-btn tool-btn-secondary" onclick="downloadAllSlides()">📦 전체 다운로드</button>
+            </div>
+          </div>
+        </div>
+        <div class="canvas-area">
+          <div id="canvas-wrapper">
+            <canvas id="editor-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <p>© 2026 인테리어패밀리 콘텐츠 생성기 · Interior Content Generator</p>
@@ -153,6 +236,9 @@
   <!-- Toast Notification -->
   <div class="toast" id="toast"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/editor.js"></script>
 </body>
+
 </html>

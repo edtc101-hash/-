@@ -355,6 +355,7 @@ function renderResults(results) {
         <span class="result-toggle">▼</span>
       </div>
       <div class="result-body">
+        <button class="editor-btn" onclick="openEditor('${r.id}')">🎨 카드뉴스 만들기</button>
         <div class="result-section">
           <div class="result-section-title">📸 카드뉴스 대본</div>
           <div class="result-content" id="card-${r.id}">
@@ -439,6 +440,7 @@ function resetAll() {
   selectedTypes.clear();
   productData = {};
   document.querySelectorAll('.form-input, .form-textarea').forEach(el => el.value = '');
+  if (typeof clearPhotos === 'function') clearPhotos();
   updateTypeCards();
   updateSelectCount();
   showStep(1);
