@@ -1,0 +1,58 @@
+meta:
+  title: "cardnews로\n카드뉴스 만들기"
+  subtitle: "YAML 하나로 끝내는 카드뉴스"
+  series: "cardnews-tutorial"
+  tag: "cardnews-tutorial"
+  author: "cardnews"
+  author_handle: "@cardnews"
+  total_slides: 3
+  created_at: "2026-02-24"
+
+slides:
+  - slide: 1
+    layout: cover
+    title: "cardnews로\n카드뉴스 만들기"
+    subtitle: "YAML 하나로 끝내는 카드뉴스"
+
+  - slide: 2
+    layout: howto
+    title: "이렇게 쓴다"
+    subtitle: "3단계면 충분하다"
+    blocks:
+      - type: step-list
+        items:
+          - step: 1
+            emoji: "📝"
+            title: "YAML 스펙 작성"
+            description: "슬라이드 구성과 블록을\nYAML로 정의한다"
+            code: "vim examples/hello.yaml"
+          - step: 2
+            emoji: "⚡"
+            title: "렌더링 실행"
+            description: "한 줄 명령어로\nPNG 이미지를 생성한다"
+            code: "node render.js examples/hello.yaml"
+          - step: 3
+            emoji: "🎨"
+            title: "테마 적용"
+            description: "8bit 같은 테마를\n옵션으로 바꿀 수 있다"
+            code: "node render.js examples/hello.yaml --theme 8bit"
+
+  - slide: 3
+    layout: closing
+    title: "YAML 하나로\n카드뉴스 완성"
+    subtitle: ""
+    blocks:
+      - type: card-list
+        items:
+          - emoji: "📄"
+            title: "YAML 스펙"
+            description: "슬라이드 구성을 선언적으로 정의"
+          - emoji: "🧩"
+            title: "12가지 블록"
+            description: "터미널, 코드, 테이블, 스텝 등\n다양한 블록 조합"
+          - emoji: "🎨"
+            title: "테마 시스템"
+            description: "CSS 변수 기반으로\n테마를 자유롭게 교체"
+      - type: highlight-banner
+        content: "node render.js your-spec.yaml"
+        bold_part: "your-spec.yaml"

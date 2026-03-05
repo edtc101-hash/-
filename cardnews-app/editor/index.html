@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드뉴스 에디터 | 인테리어패밀리</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">🎨 카드뉴스 <span>에디터</span></div>
+        <div class="header-actions">
+            <select id="theme-select" class="theme-select">
+                <option value="">기본 테마</option>
+            </select>
+            <button class="btn btn-render" id="btn-render" onclick="renderAll()">
+                ⚡ 렌더링
+            </button>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <!-- Left Panel: Editor -->
+        <aside class="editor-panel">
+            <!-- Meta Section -->
+            <div class="panel-section">
+                <div class="panel-section-title">📋 기본 정보</div>
+                <div class="form-group">
+                    <label>제목 <span class="required">*</span></label>
+                    <input type="text" id="meta-title" class="form-input" placeholder="카드뉴스 메인 제목"
+                        value="인테리어패밀리 파트너쉽 프로모션">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>부제목</label>
+                        <input type="text" id="meta-subtitle" class="form-input" placeholder="부제목"
+                            value="InFam. 파트너 전용 혜택">
+                    </div>
+                    <div class="form-group">
+                        <label>시리즈</label>
+                        <input type="text" id="meta-series" class="form-input" placeholder="시리즈명" value="인테리어패밀리">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>작성자</label>
+                        <input type="text" id="meta-author" class="form-input" placeholder="작성자" value="인테리어패밀리">
+                    </div>
+                    <div class="form-group">
+                        <label>핸들</label>
+                        <input type="text" id="meta-handle" class="form-input" placeholder="@handle"
+                            value="@interior.family">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>태그</label>
+                    <input type="text" id="meta-tag" class="form-input" placeholder="태그" value="파트너쉽-프로모션">
+                </div>
+            </div>
+
+            <!-- Slides Section -->
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    📑 슬라이드
+                    <button class="btn-add-slide" onclick="addSlide()">+ 추가</button>
+                </div>
+                <div id="slides-list" class="slides-list">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center: Slide Editor -->
+        <main class="slide-editor">
+            <div class="slide-editor-header">
+                <div class="slide-editor-title" id="slide-editor-title">슬라이드 편집</div>
+                <div class="slide-editor-actions">
+                    <button class="btn btn-sm" onclick="deleteCurrentSlide()">🗑 삭제</button>
+                    <button class="btn btn-sm" onclick="duplicateCurrentSlide()">📋 복제</button>
+                </div>
+            </div>
+
+            <div class="slide-form" id="slide-form">
+                <div class="form-row">
+                    <div class="form-group" style="flex:1">
+                        <label>레이아웃</label>
+                        <select id="slide-layout" class="form-input" onchange="updateCurrentSlide()">
+                            <option value="cover">🎬 커버</option>
+                            <option value="problem">😱 문제 제기</option>
+                            <option value="explanation">📖 설명</option>
+                            <option value="solution">✅ 솔루션</option>
+                            <option value="howto">🔧 방법</option>
+                            <option value="comparison">⚖️ 비교</option>
+                            <option value="advanced">🚀 심화</option>
+                            <option value="workflow">📋 프로세스</option>
+                            <option value="closing">🎯 마무리</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>슬라이드 제목 <span class="required">*</span></label>
+                    <input type="text" id="slide-title" class="form-input" placeholder="슬라이드 제목"
+                        onchange="updateCurrentSlide()">
+                </div>
+                <div class="form-group">
+                    <label>슬라이드 부제목</label>
+                    <input type="text" id="slide-subtitle" class="form-input" placeholder="부제목"
+                        onchange="updateCurrentSlide()">
+                </div>
+
+                <!-- Blocks Editor -->
+                <div class="blocks-section">
+                    <div class="blocks-header">
+                        <span>📦 블록들</span>
+                        <div class="block-add-menu">
+                            <button class="btn btn-sm btn-accent" onclick="toggleBlockMenu()">+ 블록 추가</button>
+                            <div class="block-menu" id="block-menu">
+                                <button onclick="addBlock('card-list')">🃏 카드 목록</button>
+                                <button onclick="addBlock('step-list')">📝 스텝 목록</button>
+                                <button onclick="addBlock('before-after')">🔄 Before/After</button>
+                                <button onclick="addBlock('table')">📊 비교 테이블</button>
+                                <button onclick="addBlock('tip-box')">💡 팁 박스</button>
+                                <button onclick="addBlock('info-box')">ℹ️ 정보 박스</button>
+                                <button onclick="addBlock('highlight-banner')">🔥 강조 배너</button>
+                                <button onclick="addBlock('text')">📝 텍스트</button>
+                                <button onclick="addBlock('progress-bar')">📊 프로그레스 바</button>
+                                <button onclick="addBlock('terminal-block')">💻 터미널</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="blocks-container" class="blocks-container">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Panel: Preview -->
+        <aside class="preview-panel">
+            <div class="panel-section-title">👁 미리보기</div>
+            <div class="preview-container" id="preview-container">
+                <div class="preview-placeholder">
+                    ⚡ 렌더링 버튼을 눌러 미리보기를 생성하세요
+                </div>
+            </div>
+            <div class="preview-nav" id="preview-nav" style="display:none">
+                <button onclick="prevPreview()">◀</button>
+                <span id="preview-counter">1 / 5</span>
+                <button onclick="nextPreview()">▶</button>
+            </div>
+            <div class="download-section" id="download-section" style="display:none">
+                <button class="btn btn-download" onclick="downloadCurrent()">📥 현재 슬라이드 다운로드</button>
+                <button class="btn btn-download-all" onclick="downloadAll()">📦 전체 다운로드 (ZIP)</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text">카드뉴스 렌더링 중...</div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드뉴스 미리보기 | 인테리어패밀리</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #FF6B35;
+        }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 600;
+            color: #FF6B35;
+            background: rgba(255, 107, 53, 0.12);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            gap: 24px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .slide-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .slide-container img.active {
+            display: block;
+        }
+
+        .nav-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+        }
+
+        .nav-zone {
+            flex: 1;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .nav-zone:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .progress-bar {
+            display: flex;
+            gap: 4px;
+            width: 100%;
+            padding: 0 4px;
+        }
+
+        .progress-dot {
+            flex: 1;
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: background 0.3s;
+        }
+
+        .progress-dot.active {
+            background: #FF6B35;
+        }
+
+        .progress-dot.done {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .info {
+            text-align: center;
+            opacity: 0.5;
+            font-size: 13px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .controls button {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .controls button:hover {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: #FF6B35;
+        }
+
+        .slide-counter {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            min-width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">인테리어<span>패밀리</span></div>
+        <div class="badge">카드뉴스 미리보기</div>
+    </header>
+
+    <main>
+        <div class="progress-bar" id="progressBar"></div>
+
+        <div class="slide-container" id="slideContainer">
+            <!-- Images loaded dynamically -->
+            <div class="nav-overlay">
+                <div class="nav-zone" onclick="prev()"></div>
+                <div class="nav-zone" onclick="next()"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="prev()">◀ 이전</button>
+            <div class="slide-counter" id="counter">1 / 5</div>
+            <button onclick="next()">다음 ▶</button>
+        </div>
+
+        <div class="info">← 왼쪽/오른쪽 클릭 또는 키보드 화살표로 탐색</div>
+    </main>
+
+    <script>
+        const SLIDES_DIR = 'output/partnership-promo';
+        const TOTAL = 5;
+        let current = 0;
+
+        const container = document.getElementById('slideContainer');
+        const progressBar = document.getElementById('progressBar');
+
+        // Load images
+        for (let i = 1; i <= TOTAL; i++) {
+            const img = document.createElement('img');
+            img.src = `${SLIDES_DIR}/${String(i).padStart(2, '0')}.png`;
+            img.alt = `슬라이드 ${i}`;
+            if (i === 1) img.classList.add('active');
+            container.insertBefore(img, container.querySelector('.nav-overlay'));
+
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot' + (i === 1 ? ' active' : '');
+            progressBar.appendChild(dot);
+        }
+
+        function show(idx) {
+            current = Math.max(0, Math.min(TOTAL - 1, idx));
+            container.querySelectorAll('img').forEach((img, i) => {
+                img.classList.toggle('active', i === current);
+            });
+            progressBar.querySelectorAll('.progress-dot').forEach((dot, i) => {
+                dot.className = 'progress-dot' + (i === current ? ' active' : i < current ? ' done' : '');
+            });
+            document.getElementById('counter').textContent = `${current + 1} / ${TOTAL}`;
+        }
+
+        function next() { show(current + 1); }
+        function prev() { show(current - 1); }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') next();
+            if (e.key === 'ArrowLeft') prev();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+meta:
+  title: "인테리어패밀리\n파트너쉽 프로모션"
+  subtitle: "InFam. 파트너 전용 혜택"
+  series: "인테리어패밀리"
+  tag: "파트너쉽-프로모션"
+  author: "인테리어패밀리"
+  author_handle: "@interior.family"
+  total_slides: 5
+  created_at: "2026-03-05"
+
+slides:
+  - slide: 1
+    layout: cover
+    title: "인테리어패밀리\n파트너쉽 프로모션"
+    subtitle: "InFam. 파트너 전용 혜택"
+
+  - slide: 2
+    layout: explanation
+    title: "선결제 멤버십"
+    subtitle: "예치금으로, 매입 단가 10%를 즉시 낮추세요"
+    blocks:
+      - type: table
+        columns:
+          - header: ""
+          - header: "🥈 GOLD"
+          - header: "🥇 PLATINUM"
+        rows:
+          - label: "예치금"
+            cells:
+              - text: "500만 원"
+              - text: "1,000만 원"
+          - label: "할인율"
+            cells:
+              - text: "전 품목 5%"
+              - text: "전 품목 10%"
+          - label: "특별 혜택"
+            cells:
+              - text: "—"
+              - text: "배송비 무료 1회\n+ 시공 포트폴리오\n촬영 서비스 1회"
+      - type: tip-box
+        label: "운영 규칙"
+        content: "선결제 금액 내 구매 시, 수량과 관계없이 해당 할인을 즉시 적용"
+        highlight_word: "즉시 적용"
+
+  - slide: 3
+    layout: explanation
+    title: "리워드 시스템"
+    subtitle: "구매할수록 쌓이는 현금성 혜택, 인팸 파트너 리워드"
+    blocks:
+      - type: card-list
+        items:
+          - emoji: "🐷"
+            title: "기본 적립"
+            description: "구매 금액의\n3% 적립"
+          - emoji: "💳"
+            title: "사용 조건"
+            description: "누적 적립금\n300,000원 이상 시\n즉시 사용 가능"
+          - emoji: "📱"
+            title: "추가 리워드 +1%"
+            description: "시공 후기 사례 사진 제출,\n추가 1% 적립\n(총 4% 혜택 가능)"
+            highlight_word: "+1%"
+
+  - slide: 4
+    layout: comparison
+    title: "한눈에 보는 혜택 비교"
+    subtitle: "멤버십 + 리워드 = 최대 14% 혜택"
+    blocks:
+      - type: before-after
+        before:
+          emoji: "😐"
+          title: "일반 구매"
+          description: "정가 구매\n적립 혜택 없음\n포트폴리오 지원 없음"
+        after:
+          emoji: "🎉"
+          title: "PLATINUM 파트너"
+          description: "전 품목 10% 할인\n구매액 4% 적립\n무료 촬영 서비스"
+      - type: progress-bar
+        label: "최대 혜택률"
+        value: 14
+        display_text: "최대 14%"
+
+  - slide: 5
+    layout: closing
+    title: "단순 할인이 아닙니다"
+    subtitle: ""
+    blocks:
+      - type: highlight-banner
+        content: "인팸은 파트너사의 마진을 더 확보해 드리는 든든한 파트너가 되겠습니다"
+        bold_part: "든든한 파트너"
+      - type: step-list
+        items:
+          - step: 1
+            emoji: "📞"
+            title: "파트너 상담 신청"
+            description: "프로필 링크에서\n간편 신청"
+          - step: 2
+            emoji: "📋"
+            title: "멤버십 등급 선택"
+            description: "GOLD 또는\nPLATINUM 선택"
+          - step: 3
+            emoji: "🚀"
+            title: "즉시 혜택 적용"
+            description: "선결제 완료 즉시\n할인 시작"

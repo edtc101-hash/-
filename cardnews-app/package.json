@@ -1,0 +1,46 @@
+{
+  "name": "cardnews",
+  "version": "0.1.0",
+  "description": "YAML spec to card-news PNG renderer / YAML 스펙을 카드뉴스 PNG로 변환하는 렌더러",
+  "files": [
+    "render.js",
+    "src/",
+    "templates/",
+    "styles/",
+    "examples/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "render.js",
+  "bin": {
+    "cardnews": "./render.js"
+  },
+  "scripts": {
+    "render": "node render.js",
+    "test": "node --test 'test/*.test.js'"
+  },
+  "keywords": [
+    "card-news",
+    "cardnews",
+    "instagram",
+    "threads",
+    "yaml",
+    "png",
+    "puppeteer",
+    "slide",
+    "image-generator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devswha/cardnews.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1",
+    "handlebars": "^4.7.8",
+    "js-yaml": "^4.1.0",
+    "multer": "^2.1.1",
+    "puppeteer": "^24.0.0"
+  }
+}

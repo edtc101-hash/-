@@ -1,0 +1,105 @@
+meta:
+  title: "인테리어,\n사진만 보고 결정하면\n망하는 이유"
+  subtitle: "Before & After로 알려드립니다"
+  series: "인테리어패밀리"
+  tag: "인테리어-카드뉴스"
+  author: "인테리어패밀리"
+  author_handle: "@interior.family"
+  total_slides: 5
+  created_at: "2026-03-05"
+
+slides:
+  - slide: 1
+    layout: cover
+    title: "인테리어,\n사진만 보고\n결정하면\n망하는 이유"
+    subtitle: "Before & After로 알려드립니다"
+
+  - slide: 2
+    layout: problem
+    title: "이런 현장, 본 적 있으시죠?"
+    subtitle: "전문가 없이 선택한 결과"
+    blocks:
+      - type: card-list
+        items:
+          - emoji: "😱"
+            title: "낡은 마감재"
+            description: "유행 지난 타일과 벽지로\n공간 전체가 칙칙해 보임"
+          - emoji: "📐"
+            title: "좁아 보이는 공간"
+            description: "자재 선택 실수로\n시각적 개방감이 사라짐"
+          - emoji: "🎨"
+            title: "어울리지 않는 색감"
+            description: "인터넷 사진만 보고 고른 자재가\n실제 공간에서 완전 다른 느낌"
+      - type: highlight-banner
+        content: "예쁜 사진만 보고 선택하면, 실제 공간에서는 전혀 다른 결과가 나옵니다"
+        bold_part: "전혀 다른 결과"
+
+  - slide: 3
+    layout: solution
+    title: "전문가가 이 자재를 선택한 이유"
+    subtitle: "카빙스톤 프로의 비밀"
+    blocks:
+      - type: before-after
+        before:
+          emoji: "❌"
+          title: "Before"
+          description: "유행 지난 마감재\n좁아 보이는 거실\n관리 어려운 주방"
+        after:
+          emoji: "✅"
+          title: "After"
+          description: "천연 대리석 질감의 신소재\n시각적 개방감 극대화\n내오염성으로 관리 편리"
+      - type: tip-box
+        label: "전문가 Tip"
+        content: "자재 하나의 차이가 공간 전체의 분위기를 바꿉니다. 전문가의 눈으로 선택하세요."
+        highlight_word: "공간 전체의 분위기"
+
+  - slide: 4
+    layout: comparison
+    title: "공간별 자재 선택 가이드"
+    subtitle: "어디에 무엇을 써야 할까?"
+    blocks:
+      - type: table
+        columns:
+          - header: "공간"
+          - header: "핵심 기준"
+          - header: "추천 포인트"
+        rows:
+          - label: "🛋️ 거실"
+            cells:
+              - text: "시각적 개방감"
+              - text: "광폭 마루 + 밝은 톤"
+          - label: "🍳 주방"
+            cells:
+              - text: "내오염성"
+              - text: "세라믹 상판"
+          - label: "🛏️ 침실"
+            cells:
+              - text: "친환경성"
+              - text: "차분한 컬러"
+      - type: info-box
+        title: "맞춤 상담"
+        content: "우리 집에 딱 맞는 자재 조합, 무료 상담으로 확인하세요"
+        highlight_word: "무료 상담"
+
+  - slide: 5
+    layout: closing
+    title: "디테일의 차이가\n가치를 만듭니다"
+    subtitle: ""
+    blocks:
+      - type: step-list
+        items:
+          - step: 1
+            emoji: "📞"
+            title: "무료 상담 신청"
+            description: "프로필 링크에서\n간편하게 신청"
+          - step: 2
+            emoji: "📐"
+            title: "무료 실측 방문"
+            description: "전문가가 직접\n현장을 확인"
+          - step: 3
+            emoji: "🎨"
+            title: "3D 렌더링 제공"
+            description: "완성 모습을\n미리 확인"
+      - type: highlight-banner
+        content: "인테리어패밀리 | 프로필 링크에서 무료 상담"
+        bold_part: "무료 상담"
